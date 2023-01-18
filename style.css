@@ -16,6 +16,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  perspective: 800px;
 }
 
 .slide {

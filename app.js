@@ -12,7 +12,7 @@ function init() {
     slides[i].dataset.order = i;
     /* Высота контейнера минус высота слайда и деленная на 2
     координата центра всех слайдов по вертикали */
-    slides[i].style.transform = "translateY(60px)";
+    /* slides[i].style.transform = "translateY(60px)"; */
     slides[i].addEventListener("click", clickHandler);
   }
 
@@ -28,7 +28,7 @@ function update() {
   /* Координата центра центрального слайда по горизонтале относительно контейнера слайдера */
   const centr = width / 2 - 120;
   /* Расстояние между центрами слайдов */
-  const delta = 125;
+  const delta = 200;
   console.log(activeOrder);
 
   for (let i = 0; i < slides.length; i++) {
@@ -40,17 +40,18 @@ function update() {
       leftslide.style.left = `${centr - delta * i}px`;
       leftslide.style.zIndex = slides.length - i;
       leftslide.style.opacity = 1 - (i * 0.8) / slides.length;
+      leftslide.style.transform = `translate3D(0px, 60px, ${-i * 100}px)`;
     }
 
     const rightslide = document.querySelector(
       `.slide[data-order="${activeOrder + i}"]`
-      /* ff */
     );
 
     if (rightslide) {
       rightslide.style.left = `${centr + delta * i}px`;
       rightslide.style.zIndex = slides.length - i;
       rightslide.style.opacity = 1 - (i * 0.8) / slides.length;
+      rightslide.style.transform = `translate3D(0px, 60px, ${-i * 100}px)`;
     }
   }
 }
