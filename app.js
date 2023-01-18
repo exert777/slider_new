@@ -44,6 +44,7 @@ function update() {
 
     const rightslide = document.querySelector(
       `.slide[data-order="${activeOrder + i}"]`
+      /* ff */
     );
 
     if (rightslide) {
