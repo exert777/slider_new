@@ -22,14 +22,15 @@ function init() {
 }
 
 function update() {
+  const widthCard = slides[activeOrder].getBoundingClientRect().width / 2;
   /* Получим ширину контейнера для слайдов */
 
   const { width } = slider_container.getBoundingClientRect();
   /* Координата центра центрального слайда по горизонтале относительно контейнера слайдера */
-  const centr = width / 2 - 120;
+  const centr = width / 2 - widthCard;
   /* Расстояние между центрами слайдов */
-  const delta = 200;
-  console.log(activeOrder);
+  const delta = widthCard;
+  console.log(widthCard);
 
   for (let i = 0; i < slides.length; i++) {
     const leftslide = document.querySelector(
@@ -51,11 +52,14 @@ function update() {
       rightslide.style.left = `${centr + delta * i}px`;
       rightslide.style.zIndex = slides.length - i;
       rightslide.style.opacity = 1 - (i * 0.8) / slides.length;
+      /* Добавляет эффект перспективы(чем дальше картинка дальше от
+        центральной, тем дальше она от пользователя в глубину экрана) */
       rightslide.style.transform = `translate3D(0px, 60px, ${-i * 100}px)`;
     }
   }
 }
 
+console.log(window.innerWidth);
 function clickHandler() {
   /* ключевое слово this содержит ссылку на элемент, на котором
   сработало событие click*/
