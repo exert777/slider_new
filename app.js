@@ -19,6 +19,7 @@ function init() {
   activeOrder = Math.floor(slides.length / 2);
 
   update();
+  bigPhoto();
 }
 
 function update() {
@@ -66,4 +67,12 @@ function clickHandler() {
   const order = +this.dataset.order;
   activeOrder = order;
   update();
+}
+
+function bigPhoto() {
+  slides.forEach((el) => {
+    el.addEventListener("click", (event) => {
+      console.log(event.target);
+    });
+  });
 }
