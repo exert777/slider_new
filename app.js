@@ -76,3 +76,5 @@ function bigPhoto() {
     });
   });
 }
+
+console.log(12);
