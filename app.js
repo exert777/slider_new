@@ -3,6 +3,9 @@
 const slider_field = document.querySelector(".slider_field");
 const slider_container = document.querySelector(".slider_container");
 const slides = document.querySelectorAll(".slide");
+const modal = document.querySelector(".modal");
+const modalImage = document.querySelector(".modal-content");
+const closeBtn = document.querySelector(".close");
 let activeOrder = 0;
 
 init();
@@ -72,9 +75,11 @@ function clickHandler() {
 function bigPhoto() {
   slides.forEach((el) => {
     el.addEventListener("click", (event) => {
-      console.log(event.target);
+      modalImage.src = event.target.dataset.src;
+      modal.style.display = "block";
+    });
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
     });
   });
 }
-
-console.log(12);
